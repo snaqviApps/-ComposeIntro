@@ -1,4 +1,4 @@
-package com.example.composeintro
+package edu.coding.composeintro
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,7 +24,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.composeintro.ui.theme.ComposeIntroTheme
+import edu.coding.composeintro.ui.theme.ComposeIntroTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
