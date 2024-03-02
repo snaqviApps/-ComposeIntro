@@ -10,6 +10,7 @@ import edu.coding.composeintro.randomuser.data.remote.response.Login
 import edu.coding.composeintro.randomuser.data.remote.response.Name
 import edu.coding.composeintro.randomuser.data.remote.response.Picture
 import edu.coding.composeintro.randomuser.data.remote.response.Registered
+import edu.coding.composeintro.randomuser.data.remote.response.Street
 import edu.coding.composeintro.randomuser.data.remote.response.Timezone
 
 class ConvertersCombined {
@@ -38,6 +39,30 @@ class ConvertersCombined {
     fun stringToLocation(gsonValue : String) = Gson().fromJson(gsonValue, Location::class.java)
     /** Location Handling ENDS */
 
+    /** Timezone Handling */
+    @TypeConverter
+    fun timezoneToJson(timezone: Timezone)  = Gson().toJson(timezone)
+
+    @TypeConverter
+    fun stringToTimezone(gsonValue : String) = Gson().fromJson(gsonValue, Timezone::class.java)
+    /** Timezone Handling ENDS */
+
+    /** Coordinates Handling */
+    @TypeConverter
+    fun coordinatesToJson(coordinates: Coordinates)  = Gson().toJson(coordinates)
+
+    @TypeConverter
+    fun stringToCoordinates(gsonValue : String) = Gson().fromJson(gsonValue, Coordinates::class.java)
+    /** Coordinates Handling ENDS */
+
+    /** Street Handling */
+    @TypeConverter
+    fun streetToJson(street: Street)  = Gson().toJson(street)
+
+    @TypeConverter
+    fun stringToStreet(gsonValue : String) = Gson().fromJson(gsonValue, Street::class.java)
+    /** Street Handling ENDS */
+
     /** Name Handling */
     @TypeConverter
     fun nameToJson(name: Name)  = Gson().toJson(name)
@@ -62,21 +87,6 @@ class ConvertersCombined {
     fun stringToRegistered(gsonValue : String) = Gson().fromJson(gsonValue, Registered::class.java)
     /** Registered Handling ENDS */
 
-    /** Coordinates Handling */
-    @TypeConverter
-    fun coordinatesToJson(coordinates: Coordinates)  = Gson().toJson(coordinates)
-
-    @TypeConverter
-    fun stringToCoordinates(gsonValue : String) = Gson().fromJson(gsonValue, Coordinates::class.java)
-    /** Registered Handling ENDS */
-
-    /** Coordinates Handling */
-    @TypeConverter
-    fun timezoneToJson(timezone: Timezone)  = Gson().toJson(timezone)
-
-    @TypeConverter
-    fun stringToTimezone(gsonValue : String) = Gson().fromJson(gsonValue, Timezone::class.java)
-    /** Registered Handling ENDS */
 
     /** Login Handling */
     @TypeConverter
@@ -84,6 +94,6 @@ class ConvertersCombined {
 
     @TypeConverter
     fun stringToLogin(gsonValue : String) = Gson().fromJson(gsonValue, Login::class.java)
-    /** Registered Handling ENDS */
+    /** Login Handling ENDS */
 
 }

@@ -9,7 +9,7 @@ import edu.coding.composeintro.randomuser.data.remote.response.Name
 import edu.coding.composeintro.randomuser.data.remote.response.Picture
 import edu.coding.composeintro.randomuser.data.remote.response.Registered
 
-data class User(
+data class Randomuser(
     @SerializedName("cell") val cell: String,
     @SerializedName("dob") val dob: Dob,
     @SerializedName("email") val email: String,

@@ -7,5 +7,5 @@ import androidx.room.TypeConverters
 @Database(entities = [RandomuserEntity::class], version = 1)
 @TypeConverters(ConvertersCombined::class)
 abstract class RandomuserDatabase : RoomDatabase() {
-    abstract val dao : RandomuserDao
+    abstract val randomuserDao : RandomuserDao
 }

@@ -28,5 +28,4 @@ data class RandomuserEntity(
 
     @PrimaryKey
     val ids: Int?
-
 )
