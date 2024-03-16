@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ComposeIntro"
+rootProject.name = "RandomuserApp"
 include(":app")
  
