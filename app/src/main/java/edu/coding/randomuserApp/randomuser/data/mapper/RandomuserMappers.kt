@@ -21,7 +21,7 @@ import edu.coding.randomuserApp.randomuser.domain.model.Randomuser
 
 
 fun RandomuserDTO.toRandomuserEntity(
-    ids: Int
+//    ids: Int
 ): RandomuserEntity {
     return RandomuserEntity(
         cell = cell ?: "",
@@ -51,7 +51,7 @@ fun RandomuserDTO.toRandomuserEntity(
  * that maps Entity to Data-Object it is handling (Randomuser)
  */
 fun RandomuserEntity.toRandomuser(
-    ids: Int
+//    ids: Int
 ): Randomuser {
     return Randomuser(
         cell = cell,
@@ -92,6 +92,6 @@ fun RandomuserEntity.toRandomuser(
             thumbnail = picture.thumbnail
         ),
         registered = Registered(age = registered.age, date = registered.date),
-        id = Id(name = this.id.name, value = this.id.value)
+//        id = Id(name = this.id.name, value = this.id.value)
     )
 }

@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "ghar.learn.composeintro"
+    namespace = "edu.coding.randomuserApp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ghar.learn.composeintro"
+        applicationId = "edu.coding.randomuserApp"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -75,6 +75,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -82,7 +83,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
@@ -93,10 +93,10 @@ dependencies {
     implementation("androidx.room:room-paging:2.6.1")
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-compiler:2.48")
-    ksp("androidx.hilt:hilt-compiler:1.1.0")
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("com.google.dagger:hilt-android:2.50")
+    ksp("com.google.dagger:hilt-compiler:2.50")
+    ksp("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

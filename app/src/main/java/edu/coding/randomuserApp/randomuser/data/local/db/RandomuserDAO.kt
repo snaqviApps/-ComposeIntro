@@ -14,8 +14,8 @@ interface RandomuserDao {
     @Query("Select * From RandomuserEntity where id =  :ids")
     suspend fun getRandomuserById(ids: Int) : RandomuserEntity?
 
-    @Query("Select * From RandomuserEntity where name =  :name")
-    suspend fun getRandomuserByName(name: Name) : List<RandomuserEntity>
+    @Query("Select * From RandomuserEntity where name = :name")
+    suspend fun getRandomuserByName(name: Name) : RandomuserEntity?
 
     @Query("Select COUNT(*) From RandomuserEntity")
     suspend fun getRowsCount() : Int

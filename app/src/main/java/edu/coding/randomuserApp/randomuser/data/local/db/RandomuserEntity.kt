@@ -26,6 +26,6 @@ data class RandomuserEntity(
     @SerializedName("registered") val registered: Registered,
     @SerializedName("id") val id: Id,
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val ids: Int?
 )

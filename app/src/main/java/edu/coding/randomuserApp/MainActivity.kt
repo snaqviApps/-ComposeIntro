@@ -22,9 +22,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import edu.coding.randomuserApp.randomuser.presentation.RandomuserViewModel
 import edu.coding.randomuserApp.ui.theme.RandomuserAppTheme
 
 @AndroidEntryPoint
@@ -43,14 +44,15 @@ class MainActivity : ComponentActivity() {
 ////                    Text(text = "Hi Compose")
 //                }
 
-                ShowUi()
+                val randomuserViewModel = hiltViewModel<RandomuserViewModel>()
+                ShowUi(randomuserViewModel)
+
             }
         }
     }
 
-    @Preview
     @Composable
-    fun ShowUi() {
+    fun ShowUi(randomuserViewModel: RandomuserViewModel) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()

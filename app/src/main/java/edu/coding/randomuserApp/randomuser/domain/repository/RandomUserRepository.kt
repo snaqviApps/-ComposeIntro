@@ -6,13 +6,13 @@ import edu.coding.randomuserApp.randomuser.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 
-interface IRandomUserRepository {
+interface RandomUserRepository {
 
-    suspend fun getRandomuser(
-        forceFetch : Boolean,
-        id: Int = -1,
+    suspend fun getTenRandomusers(
+//        id: Int = -1,
         name: Name
-    ) : Flow<Resource<List<Randomuser>>>
+//    ) : Flow<Resource<List<Randomuser>>>
+    ) : Flow<Resource<Randomuser>>
 
     suspend fun getRandomuser(ids: Int) : Flow<Resource<Randomuser>>
 }
