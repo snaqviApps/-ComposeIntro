@@ -2,6 +2,7 @@ package edu.coding.randomuserApp.randomuser.data.repository
 
 import android.net.http.HttpException
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresExtension
 import edu.coding.randomuserApp.randomuser.data.local.db.RandomuserDatabase
 import edu.coding.randomuserApp.randomuser.data.local.db.RandomuserEntity
@@ -25,7 +26,7 @@ class RandomUserRepositoryImpl @Inject constructor(
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun getTenRandomusers(
 //        id: Int,
-        name: Name
+        name: Name?
     ): Flow<Resource<Randomuser>> {
         return flow {
             emit(Resource.Loading(true))
@@ -40,19 +41,26 @@ class RandomUserRepositoryImpl @Inject constructor(
              */
 //            val localRandomuser: RandomuserEntity? = randomuserDatabase.randomuserDao.getRandomuserById(ids)
 
-            val localRandomuser: RandomuserEntity? = randomuserDatabase.randomuserDao.getRandomuserByName(name)
-            val isTotalLessThan10 = randomuserDatabase.randomuserDao.getRowsCount()
-            val isLoadingFromLocal = (localRandomuser != null) && (isTotalLessThan10 >= 10)
+            name?.let {
+                val localRandomuser: RandomuserEntity? =
+                    randomuserDatabase.randomuserDao.getRandomuserByName(name)
+                val isTotalLessThan10 = randomuserDatabase.randomuserDao.getRowsCount()
+                val isLoadingFromLocal = (localRandomuser != null) && (isTotalLessThan10 >= 10)
 
-            /**
-             * need to be validated if 10-records are needed to furnish the UI
-             */
-            if (isLoadingFromLocal) {
-                emit(Resource.Success(
-                    data = localRandomuser?.toRandomuser()
-                ))
-                emit(Resource.Loading(false))
-                return@flow
+
+                /**
+                 * need to be validated if 10-records are needed to furnish the UI
+                 */
+                if (isLoadingFromLocal) {
+                    emit(
+                        Resource.Success(
+                            data = localRandomuser?.toRandomuser()
+                        )
+                    )
+                    emit(Resource.Loading(false))
+                    return@flow
+                }
+
             }
 
             /**
@@ -61,7 +69,9 @@ class RandomUserRepositoryImpl @Inject constructor(
              * still save it to db first as SST (single source of truth)
              */
             val randomuserFromApi = try {
-                randomuserApi.getRandomuser()
+                randomuserApi.getRandomuser().apply {
+                Log.d(this::class.qualifiedName, "RandomuserRepositoryImpl: getTenRandomusers: ${name?.first} ${name?.last}} ")
+                }
             } catch (e: IOException){
                e.printStackTrace()
                emit(Resource.Error(message = "Error fetching user-data"))
@@ -76,7 +86,9 @@ class RandomUserRepositoryImpl @Inject constructor(
             val randomuserEntityFromRemote : RandomuserEntity = randomuserFromApi
                     .toRandomuserEntity()
                     .apply {
-                        randomuserDatabase.randomuserDao.upsertRandomuser(this)
+                        randomuserDatabase
+                            .randomuserDao
+                            .upsertRandomuser(this)
                     }
             emit(Resource.Success(randomuserEntityFromRemote.toRandomuser()))
             emit(Resource.Loading(false))

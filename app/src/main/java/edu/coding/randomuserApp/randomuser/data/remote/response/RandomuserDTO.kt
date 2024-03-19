@@ -1,7 +1,11 @@
 package edu.coding.randomuserApp.randomuser.data.remote.response
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.RawValue
 
+@Parcelize
 data class RandomuserDTO(
     @SerializedName("cell") val cell: String?,
     @SerializedName("dob") val dob: Dob?,
@@ -15,4 +19,4 @@ data class RandomuserDTO(
     @SerializedName("phone") val phone: String?,
     @SerializedName("picture") val picture: Picture?,
     @SerializedName("registered") val registered: Registered?
-)
+) : Parcelable

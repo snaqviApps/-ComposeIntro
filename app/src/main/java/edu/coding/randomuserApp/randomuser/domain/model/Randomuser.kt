@@ -1,13 +1,17 @@
 package edu.coding.randomuserApp.randomuser.domain.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import edu.coding.randomuserApp.randomuser.data.remote.response.Dob
+import edu.coding.randomuserApp.randomuser.data.remote.response.Id
 import edu.coding.randomuserApp.randomuser.data.remote.response.Location
 import edu.coding.randomuserApp.randomuser.data.remote.response.Login
 import edu.coding.randomuserApp.randomuser.data.remote.response.Name
 import edu.coding.randomuserApp.randomuser.data.remote.response.Picture
 import edu.coding.randomuserApp.randomuser.data.remote.response.Registered
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Randomuser(
     @SerializedName("cell") val cell: String,
     @SerializedName("dob") val dob: Dob,
@@ -20,5 +24,5 @@ data class Randomuser(
     @SerializedName("phone") val phone: String,
     @SerializedName("picture") val picture: Picture,
     @SerializedName("registered") val registered: Registered,
-//    @SerializedName("id") val id: Id
-)
+    @SerializedName("id") val id: Id
+) : Parcelable

@@ -5,6 +5,7 @@ import retrofit2.http.GET
 
 interface RandomuserApi {
 
-    @GET("api/")
+//    @GET("api/")
+    @GET("api")
     suspend fun getRandomuser() : RandomuserDTO
 }

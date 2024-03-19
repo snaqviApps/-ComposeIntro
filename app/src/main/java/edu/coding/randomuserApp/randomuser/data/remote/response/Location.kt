@@ -1,8 +1,11 @@
 package edu.coding.randomuserApp.randomuser.data.remote.response
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Location(
     @SerializedName("city") val city: String,
     @SerializedName("coordinates") val coordinates: Coordinates,
@@ -11,4 +14,4 @@ data class Location(
     @SerializedName("state") val state: String,
     @SerializedName("street") val street: Street,
     @SerializedName("timezone") val timezone: Timezone
-)
+) : Parcelable

@@ -1,8 +1,11 @@
 package edu.coding.randomuserApp.randomuser.data.remote.response
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Login(
     @SerializedName("md5") val md5: String,
     @SerializedName("password") val password: String,
@@ -11,4 +14,4 @@ data class Login(
     @SerializedName("sha256") val sha256: String,
     @SerializedName("username") val username: String,
     @SerializedName("uuid") val uuid: String
-)
+) : Parcelable

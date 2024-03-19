@@ -8,14 +8,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -37,15 +40,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             RandomuserAppTheme {
                 // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-////                    Text(text = "Hi Compose")
-//                }
-
-                val randomuserViewModel = hiltViewModel<RandomuserViewModel>()
-                ShowUi(randomuserViewModel)
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val randomuserViewModel = hiltViewModel<RandomuserViewModel>()
+                    val randomuserState = randomuserViewModel.randomuserState.collectAsState()
+                    randomuserState.value.randomuserName?.apply {
+                        Text(text = "$first $last")
+                    }
+                    Text(text = "nothing added to the state")
+                }
 
             }
         }
@@ -84,7 +89,11 @@ class MainActivity : ComponentActivity() {
                     if(textVisibilityState.value) 0.8f else 0.3f
                 ),
                 text = "Visible"
-            )
+//                        text = randomuserViewModel.randomuserState
+//                            .collectAsState().value.randomuserEntry?.name,
+
+                )
+
 
             Spacer(modifier = Modifier.height(50.dp))
             Button(

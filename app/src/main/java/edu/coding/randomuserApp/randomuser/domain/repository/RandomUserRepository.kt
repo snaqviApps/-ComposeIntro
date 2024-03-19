@@ -10,7 +10,7 @@ interface RandomUserRepository {
 
     suspend fun getTenRandomusers(
 //        id: Int = -1,
-        name: Name
+        name: Name? = null
 //    ) : Flow<Resource<List<Randomuser>>>
     ) : Flow<Resource<Randomuser>>
 

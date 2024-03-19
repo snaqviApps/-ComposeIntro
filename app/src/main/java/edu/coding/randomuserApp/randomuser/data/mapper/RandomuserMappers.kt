@@ -92,6 +92,6 @@ fun RandomuserEntity.toRandomuser(
             thumbnail = picture.thumbnail
         ),
         registered = Registered(age = registered.age, date = registered.date),
-//        id = Id(name = this.id.name, value = this.id.value)
+        id = Id(name = this.id.name, value = this.id.value)
     )
 }
